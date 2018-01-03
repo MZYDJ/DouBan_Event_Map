@@ -32,13 +32,24 @@ class ViewModel {
                 // GET https://api.douban.com/v2/event/:id
                 // 如果有后端程序可以由后端完成api请求
                 fetch('DouBanAPI/' + id)
-                .then(data => data.json())
+                    .then(data => data.json())
                     .then(data => {
                         this.activeList.push(new Activity(data))
-                    })
-                    .catch(e => {
-                        console.log(e.responseText);
+                    }).catch(e => {
+                        console.log(e);
                         alert('豆瓣API调用失败');
+                    }).then(() => {
+                        return fetch('http://restapi.amap.com/v3/geocode/geo?key=5c2195fa98915a30224b5104ba014f89&city=029&address=' + this.activeList()[(this.activeList().length - 1)].address())
+                    }).then(data => data.json()).then(data => {
+                        if (data.status != 1) {
+                            alert('高德地图地理编码失败，错误码：' + data.infocode)
+                        } else {
+                            this.activeList()[(this.activeList().length - 1)].location = ko.observable(data.geocodes[0].location);
+                            console.log(this.activeList()[(this.activeList().length - 1)].location());
+                        }
+                    }).catch(e => {
+                        console.log(e);
+                        alert('高德地图地理编码API调用失败');
                     });
             });
         };
@@ -80,6 +91,7 @@ let map;
 const windowWidth = $(window).width();
 
 function initMap() {
+    initAMapUI();
     map = new AMap.Map('container', {
         resizeEnable: true,
         center: [108.946922, 34.261219],
@@ -87,8 +99,8 @@ function initMap() {
     });
     map.plugin(["AMap.ToolBar", 'AMap.Scale', 'AMap.OverView'], function() {
         map.addControl(new AMap.Scale());
+        // 检测到设备为小屏幕手机时
         if (windowWidth < 640) {
-            initAMapUI();
             // 改变缩放级以
             map.setZoom(12);
             AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
@@ -98,6 +110,7 @@ function initMap() {
                 }));
             });
         };
+        // 检测到设备为大屏幕桌面时
         if (windowWidth >= 640) {
             // 添加工具条以及鹰眼
             map.addControl(new AMap.ToolBar());
