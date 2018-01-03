@@ -5,7 +5,7 @@ const model = {
     party: [30007955, 29894782, 29943640, 29971061, 30009328, 29985248]
 }
 
-// 活动进行初始化
+// 活动类
 class Activity {
     constructor(data) {
         // console.log(data)
@@ -17,13 +17,14 @@ class Activity {
         this.content = ko.observable(data.content);
         this.time_str = ko.observable(data.time_str);
         this.address = ko.observable(data.address);
-        this.coordinate = ko.observable(data.coordinate);
+        this.location = ko.observable(data.location);
     }
 }
 
 class ViewModel {
     constructor() {
         this.activeList = ko.observableArray([]);
+        this.showList = ko.observableArray([]);
         for (let sort in model) {
             model[sort].forEach(id => {
                 // 由于豆瓣API的Apikey暂不对个人开放申请
@@ -41,20 +42,23 @@ class ViewModel {
                     }).then(() => {
                         return fetch('http://restapi.amap.com/v3/geocode/geo?key=5c2195fa98915a30224b5104ba014f89&city=029&address=' + this.activeList()[(this.activeList().length - 1)].address())
                     }).then(data => data.json()).then(data => {
-                        if (data.status != 1) {
-                            alert('高德地图地理编码失败，错误码：' + data.infocode)
+                        // 检查返回状态是否正常
+                        if (data.status) {
+                            // 将获取到的坐标存入每个对应的活动中
+                            this.activeList()[(this.activeList().length - 1)].location(data.geocodes[0].location);
                         } else {
-                            this.activeList()[(this.activeList().length - 1)].location = ko.observable(data.geocodes[0].location);
-                            console.log(this.activeList()[(this.activeList().length - 1)].location());
+                            // 返回结果异常，弹出窗口提示用户
+                            alert('高德地图地理编码失败，错误码：' + data.infocode)
+                            console.log(data)
                         }
+                        // 列表显示的活动列表，默认显示音乐类
+                        this.showList(this.activeList.slice(0, 6));
                     }).catch(e => {
                         console.log(e);
                         alert('高德地图地理编码API调用失败');
                     });
             });
         };
-        // 列表显示的活动列表，默认显示音乐类
-        this.showList = ko.observableArray(this.activeList.slice(0, 6));
         // 当前选择显示的活动
         this.currentActive = ko.observableArray([]);
 
@@ -78,7 +82,8 @@ class ViewModel {
         }
     }
 }
-ko.applyBindings(new ViewModel());
+let view;
+ko.applyBindings(view = new ViewModel());
 // $.ajax({
 //     url: 'https://api.douban.com/v2/event/' + 29086248
 // }).done(data => {
@@ -86,39 +91,74 @@ ko.applyBindings(new ViewModel());
 //     console.log(data);
 // })
 
+class Map {
+    constructor() {}
 
-let map;
-const windowWidth = $(window).width();
-
-function initMap() {
-    initAMapUI();
-    map = new AMap.Map('container', {
-        resizeEnable: true,
-        center: [108.946922, 34.261219],
-        zoom: 13
-    });
-    map.plugin(["AMap.ToolBar", 'AMap.Scale', 'AMap.OverView'], function() {
-        map.addControl(new AMap.Scale());
-        // 检测到设备为小屏幕手机时
-        if (windowWidth < 640) {
-            // 改变缩放级以
-            map.setZoom(12);
-            AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
-                //添加一个缩放控件
-                map.addControl(new BasicControl.Zoom({
-                    position: 'rt'
+    initMap() {
+        initAMapUI();
+        this.map = new AMap.Map('map', {
+            resizeEnable: true,
+            center: [108.946922, 34.261219],
+            zoom: 13
+        });
+        this.map.plugin(["AMap.ToolBar", 'AMap.Scale', 'AMap.OverView'], function() {
+            this.map.addControl(new AMap.Scale());
+            // 检测到设备为小屏幕手机时
+            if (windowWidth < 640) {
+                // 改变缩放级以
+                this.map.setZoom(12);
+                AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+                    //添加一个缩放控件
+                    this.map.addControl(new BasicControl.Zoom({
+                        position: 'rt'
+                    }));
+                });
+            };
+            // 检测到设备为大屏幕桌面时
+            if (windowWidth >= 640) {
+                // 添加工具条以及鹰眼
+                this.map.addControl(new AMap.ToolBar());
+                this.map.addControl(new AMap.OverView({
+                    isOpen: true
                 }));
-            });
-        };
-        // 检测到设备为大屏幕桌面时
-        if (windowWidth >= 640) {
-            // 添加工具条以及鹰眼
-            map.addControl(new AMap.ToolBar());
-            map.addControl(new AMap.OverView({
-                isOpen: true
-            }));
-        };
-    });
-
+            };
+        });
+    }
 
 }
+
+let map = new Map();
+const windowWidth = $(window).width();
+
+// function initMap() {
+//     initAMapUI();
+//     map = new AMap.Map('map', {
+//         resizeEnable: true,
+//         center: [108.946922, 34.261219],
+//         zoom: 13
+//     });
+//     map.plugin(["AMap.ToolBar", 'AMap.Scale', 'AMap.OverView'], function() {
+//         map.addControl(new AMap.Scale());
+//         // 检测到设备为小屏幕手机时
+//         if (windowWidth < 640) {
+//             // 改变缩放级以
+//             map.setZoom(12);
+//             AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+//                 //添加一个缩放控件
+//                 map.addControl(new BasicControl.Zoom({
+//                     position: 'rt'
+//                 }));
+//             });
+//         };
+//         // 检测到设备为大屏幕桌面时
+//         if (windowWidth >= 640) {
+//             // 添加工具条以及鹰眼
+//             map.addControl(new AMap.ToolBar());
+//             map.addControl(new AMap.OverView({
+//                 isOpen: true
+//             }));
+//         };
+//     });
+
+
+// }

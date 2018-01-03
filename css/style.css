@@ -3,14 +3,88 @@ html, body {
     height: 100%;
     width: 100%;
     position: absolute;
+    font-size:13px
 }
 
-#container {
+#map {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100%;
+    width: 80%;
     height: 100%;
+}
+
+#panel{
+position:absolute;
+top:0;
+bottom:0;
+right:0;
+height:100%;
+overflow:auto;
+width:20%;
+z-index:999;
+border-left:1px solid #eaeaea;
+background:#fff;
+}
+
+ul,
+li{
+padding:0;
+margin:0;
+list-style:none;
+}
+
+li.poibox{
+border-bottom:1px solid #eaeaea;
+border-left:2px solid rgba(0,0,0,0);
+padding:10px 3px;
+cursor:pointer;
+}
+li.poibox.selected{
+border-left-color:#f00;
+background:#f6f6f6;
+}
+li.poibox:hover{
+background:#f6f6f6;
+}
+li.poibox:last-child{
+border-bottom:none;
+}
+
+h3.poi-title{
+margin:3px 0;
+font-size:13px;
+}
+.poibox .poi-info-left{
+padding-left:8px
+}
+.poi-addr{
+margin:7px 0 0;
+}
+.poibox .poi-imgbox{
+width:100px;
+height:74px;
+vertical-align:top;
+float:right;
+margin:0 8px;
+overflow:hidden
+}
+.poibox .poi-img{
+display:inline-block;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:50% 50%;
+}
+
+table.choole {
+    width: 100%;
+}
+td.choole {
+    border:5px;
+    border-style:solid;
+    border-bottom-color:#ffffff;
+    text-align:center;
 }

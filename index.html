@@ -6,7 +6,7 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>街区地图</title>
-    <script async defer src="https://webapi.amap.com/maps?v=1.4.3&key=4fa196a8e2d610ffa49d6b58f9419c2f&callback=initMap"></script>
+    <script async defer src="https://webapi.amap.com/maps?v=1.4.3&key=4fa196a8e2d610ffa49d6b58f9419c2f&callback=map.initMap"></script>
     <!-- <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script> -->
     <script src="//webapi.amap.com/ui/1.0/main-async.js?v=1.0.11"></script>
     <script src="http://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
@@ -14,7 +14,31 @@
 </head>
 <body>
 	<div id='container'>
-		
+		<div id='map'></div>
+		<div id='panel'>
+		<table class='choole' >
+			<tr>
+				<td class='choole' data-bind='click: chooseList(0)'>音乐</td>
+				<td class='choole' data-bind='click: chooseList(1)'>戏剧</td>
+				<td class='choole' data-bind='click: chooseList(2)'>聚会</td>
+			</tr>
+		</table>
+		<ul id='list' data-bind='foreach: showList'>
+			<!-- <div id='choole'></div> -->
+			<li class="poibox" data-bind='click: $parent.chooseActive'>
+				<div class="poi-imgbox"><img class="poi-img" data-bind='attr: {src: image}'></img></div>
+				<div class="poi-info-left">    
+					<h3 class="poi-title" data-bind='text: title'></h3>
+					<div class="poi-info">
+						<span class="poi-price">
+							<font color="#999999">时间:</font><font color="#f53623" data-bind='text: time_str'></font>
+						</span>
+						<p class="poi-addr" data-bind='text: address'></p>
+					</div>
+				</div>
+			</li>
+		</ul>
+		</div>
 	</div>
     <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="js/app.js"></script>
