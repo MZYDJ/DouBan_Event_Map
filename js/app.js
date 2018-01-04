@@ -25,6 +25,7 @@ class ViewModel {
     constructor() {
         this.activeList = ko.observableArray([]);
         this.showList = ko.observableArray([]);
+        let arrayOfPr = [];
         for (let sort in model) {
             model[sort].forEach(id => {
                 // 由于豆瓣API的Apikey暂不对个人开放申请
@@ -32,51 +33,53 @@ class ViewModel {
                 // 暂时使用下载到本地的数据模拟，豆瓣api为：
                 // GET https://api.douban.com/v2/event/:id
                 // 如果有后端程序可以由后端完成api请求
-                fetch('DouBanAPI/' + id)
-                    .then(data => data.json())
-                    .then(data => {
-                        this.activeList.push(new Activity(data))
-                    }).catch(e => {
-                        console.log(e);
-                        alert('豆瓣API调用失败');
-                    }).then(() => {
-                        return Promise.all([fetch('http://restapi.amap.com/v3/geocode/geo?key=5c2195fa98915a30224b5104ba014f89&city=029&address=' + this.activeList()[(this.activeList().length - 1)].address()), this.activeList().length - 1]);
-                    }).then(([data, index]) => {
-                        // 检查返回状态是否正常
-                        data = data.json();
-                        data.then(data => {
-                            if (data.status) {
-                                // 将获取到的坐标存入每个对应的活动中
-                                this.activeList()[index].location(data.geocodes[0].location);
-                            } else {
-                                // 返回结果异常，弹出窗口提示用户
-                                alert('高德地图地理编码失败，错误码：' + data.infocode)
-                                console.log(data)
-                            }
-                            // 列表显示的活动列表，默认显示音乐类
-                            this.showList(this.activeList.slice(0, 6));
-                            // 初始化标记点
-                            if (index < 6) {
-                                makeMark(data.geocodes[0].location, this.activeList()[index].title());
-                            }
-                        }).catch(e => {
-                            console.log(e);
-                        });
-                    }).catch(e => {
-                        console.log(e);
-                        alert('高德地图地理编码API调用失败');
-                    });
+                arrayOfPr.push(fetch('DouBanAPI/' + id).then(data => data.json()));
             });
         };
-        // 当前选择显示的活动
-        this.currentActive = ko.observableArray([]);
+        Promise.all(arrayOfPr).then(data => {
+            data.forEach(data => {this.activeList.push(new Activity(data))});
+        }).catch(e => {
+            console.log(e);
+            alert('豆瓣API调用失败');
+        }).then(() => {
+            arrayOfPr = arrayOfPr.map((data, index) => {
+                return fetch('http://restapi.amap.com/v3/geocode/geo?key=5c2195fa98915a30224b5104ba014f89&city=029&address=' + this.activeList()[index].address()).then(data => data.json());
+            });
+            return Promise.all(arrayOfPr);
+        }).then((data) => {
+            // 检查返回状态是否正常
+            data.forEach((data, index) => {
+                if (data.status) {
+                    // 将获取到的坐标存入每个对应的活动中
+                    this.activeList()[index].location(data.geocodes[0].location);
+                } else {
+                    // 返回结果异常，弹出窗口提示用户
+                    alert('高德地图地理编码失败，错误码：' + data.infocode)
+                    console.log(data)
+                }
+                // 列表显示的活动列表，默认显示音乐类
+                this.showList(this.activeList.slice(0, 6));
+                // 初始化标记点
+                if (index < 6) {
+                    makeMark(data.geocodes[0].location, this.activeList()[index].title());
+                }
+            });
+        }).catch(e => {
+            console.log(e);
+            alert('高德地图地理编码API调用失败');
+        });
 
-        // 选择活动
+
+        // 当前选择显示的活动
+        this.currentActive = ko.observable();
+
+        // 选择活动以及显示信息窗
         this.chooseActive = clickedActive => {
             this.currentActive(clickedActive);
+
         };
 
-        // 改变现实的活动列表
+        // 改变现实的活动列表以及更改标注点
         this.chooseList = clickedList => {
             switch (clickedList) {
                 case 0:
@@ -100,6 +103,7 @@ class ViewModel {
 
 // 地图初始化
 let MAP;
+
 function initMap() {
     initAMapUI();
     MAP = new AMap.Map('map', {
@@ -110,7 +114,7 @@ function initMap() {
 
 
     // 添加地图控件
-    MAP.plugin(["AMap.ToolBar", 'AMap.Scale', 'AMap.OverView'], function() {
+    MAP.plugin(["AMap.ToolBar", 'AMap.Scale', 'AMap.OverView', 'AMap.AdvancedInfoWindow'], function() {
         MAP.addControl(new AMap.Scale());
         const windowWidth = $(window).width();
         // 检测到设备为小屏幕手机时
@@ -132,6 +136,12 @@ function initMap() {
                 isOpen: true
             }));
         };
+
+        // 初始化信息窗
+        infowindow = new AMap.AdvancedInfoWindow({
+            content: "<div class='info-title' data-bind='text: currentActive.title'></div><div class='info-content' data-bind='text: currentActive.content'><img data-bind='attr: {src: currentActive.image}'><br/><a target='_blank' data-bind='attr: {href: currentActive.adapt_url}'>查看详情</a></div>",
+            offset: new AMap.Pixel(0, -30)
+        });
     });
 }
 
@@ -147,8 +157,12 @@ function makeMark(location, title) {
     });
     markers.push(marker);
     // console.log(this)
-    MAP.add(markers);
-    MAP.setFitView();
+    if (MAP) {
+        MAP.add(markers);
+        MAP.setFitView();
+    } else if (markers.length == 6) {
+        alert('高德地图加载过慢导致标记点异常，请刷新页面。')
+    }
 }
 
 // 更新标记点
@@ -158,4 +172,12 @@ function updateMark(location, title, index) {
     MAP.setFitView();
 }
 
-ko.applyBindings(new ViewModel());
+// 初始化信息窗
+let infowindow;
+// 更新信息窗位置和内容
+function updateInfowindow(location) {
+    infowindow.open(MAP, location.split(','));
+}
+
+let VIEW;
+ko.applyBindings(VIEW = new ViewModel());
