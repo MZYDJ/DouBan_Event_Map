@@ -70,7 +70,7 @@ class ViewModel {
             this.showList(this.activeList.slice(0, 6));
             // 初始化标记点
             this.showList().forEach((data, index) => {
-                makeMark(data.location(), data.title());
+                makeMark(data.location(), data.title(), index);
             });
         })
 
@@ -81,7 +81,8 @@ class ViewModel {
         // 选择活动以及显示信息窗
         this.chooseActive = clickedActive => {
             this.currentActive(clickedActive);
-
+            updateInfoWindow(this.currentActive().location());
+            markers[$.inArray(clickedActive, this.showList())].setAnimation('AMAP_ANIMATION_DROP');
         };
 
         // 改变现实的活动列表以及更改标注点
@@ -100,16 +101,30 @@ class ViewModel {
             this.showList().forEach((data, index) => {
                 // console.log(data.location(), data.title())
                 updateMark(data.location(), data.title(), index);
-            })
+            });
+
+            // 关闭信息窗
+            if (infoWindow) {
+                infoWindow.close();
+            };
         };
+        console.log('完成绑定')
+        // while(true) {
+        //     if (MAPREADY) {
+        //         break;
+        //     };
+        //     console.log('等待地图')
+        // };
     }
 }
 
 
 // 地图初始化
-let MAP;
+let MAP,
+    MAPREADY = false;
 
 function initMap() {
+    console.log('开始初始化地图')
     initAMapUI();
     MAP = new AMap.Map('map', {
         resizeEnable: true,
@@ -120,6 +135,12 @@ function initMap() {
 
     // 添加地图控件
     MAP.plugin(["AMap.ToolBar", 'AMap.Scale', 'AMap.OverView', 'AMap.AdvancedInfoWindow'], function() {
+        // 初始化信息窗
+        infoWindow = new AMap.AdvancedInfoWindow({
+            content: "<div id='info' data-bind='with: currentActive()'><div class='info-title' data-bind='text: title'></div><div class='info-content' data-bind='html: content'></div><img data-bind='attr: {src: image}'><br/><a target='_blank' data-bind='attr: {href: adapt_url}'>查看详情</a></div>",
+            offset: new AMap.Pixel(0, -30)
+        });
+        MAPREADY = true;
         MAP.addControl(new AMap.Scale());
         const windowWidth = $(window).width();
         // 检测到设备为小屏幕手机时
@@ -144,11 +165,6 @@ function initMap() {
             }));
         };
 
-        // 初始化信息窗
-        infowindow = new AMap.AdvancedInfoWindow({
-            content: "<div class='info-title' data-bind='text: currentActive.title'></div><div class='info-content' data-bind='text: currentActive.content'><img data-bind='attr: {src: currentActive.image}'><br/><a target='_blank' data-bind='attr: {href: currentActive.adapt_url}'>查看详情</a></div>",
-            offset: new AMap.Pixel(0, -30)
-        });
     });
 }
 
@@ -156,11 +172,18 @@ function initMap() {
 // 存储标记点的数组
 let markers = [];
 // 设置标记点
-function makeMark(location, title) {
+function makeMark(location, title, index) {
     let marker = new AMap.Marker({
         position: location.split(','),
         title: title,
-        map: MAP
+        map: MAP,
+        topWhenClick: true,
+        // animation: 'AMAP_ANIMATION_DROP',
+        clickable: true,
+        extData: index
+    });
+    marker.on('click', () => {
+        VIEW.chooseActive(VIEW.showList()[marker.getExtData()]);
     });
     markers.push(marker);
     // 判断是否创建完成标记点数组
@@ -171,7 +194,7 @@ function makeMark(location, title) {
         } else {
             alert('高德地图加载过慢导致标记点异常，请刷新页面。')
         };
-    }; 
+    };
 }
 
 // 更新标记点
@@ -182,11 +205,16 @@ function updateMark(location, title, index) {
 }
 
 // 初始化信息窗
-let infowindow;
+let infoWindow,
+    INFOBOIND = false;
 // 更新信息窗位置和内容
-function updateInfowindow(location) {
-    infowindow.open(MAP, location.split(','));
-}
+function updateInfoWindow(location) {
+    infoWindow.open(MAP, location.split(','));
+    if (!INFOBOIND) {
+        ko.applyBindings(VIEW, document.getElementById('info'));
+        INFOBOIND = true;
+    }
+};
 
 let VIEW;
 ko.applyBindings(VIEW = new ViewModel());
