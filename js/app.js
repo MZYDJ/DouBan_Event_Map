@@ -26,6 +26,8 @@ class ViewModel {
         this.activeList = ko.observableArray([]);
         this.showList = ko.observableArray([]);
         let arrayOfPr = [];
+
+        // 创建初始Promise数组，完成豆瓣API请求
         for (let sort in model) {
             model[sort].forEach(id => {
                 // 由于豆瓣API的Apikey暂不对个人开放申请
@@ -36,41 +38,44 @@ class ViewModel {
                 arrayOfPr.push(fetch('DouBanAPI/' + id).then(data => data.json()));
             });
         };
-        Promise.all(arrayOfPr).then(data => {
-            data.forEach(data => {this.activeList.push(new Activity(data))});
-        }).catch(e => {
-            console.log(e);
-            alert('豆瓣API调用失败');
-        }).then(() => {
-            arrayOfPr = arrayOfPr.map((data, index) => {
-                return fetch('http://restapi.amap.com/v3/geocode/geo?key=5c2195fa98915a30224b5104ba014f89&city=029&address=' + this.activeList()[index].address()).then(data => data.json());
-            });
-            return Promise.all(arrayOfPr);
-        }).then((data) => {
-            // 检查返回状态是否正常
-            data.forEach((data, index) => {
+
+        // 继续链接Promise链，让每个活动ID对应的豆瓣Promise完成后发起高德地理编码Promise请求
+        // 并将返回数据按照ID的顺序存入activeList观察数组中
+        arrayOfPr = arrayOfPr.map((data, index) => {
+            return data.then(data => {
+                this.activeList()[index] = new Activity(data);
+            }).catch(e => {
+                console.log(e);
+                alert('豆瓣API第' + index + 1 + '个调用失败、请尝试刷新。');
+            }).then(() => {
+                return fetch('http://restapi.amap.com/v3/geocode/geo?key=5c2195fa98915a30224b5104ba014f89&city=029&address=' + this.activeList()[index].address());
+            }).then(data => data.json()).then(data => {
+                // 判断返回结果是否成功
                 if (data.status) {
                     // 将获取到的坐标存入每个对应的活动中
                     this.activeList()[index].location(data.geocodes[0].location);
                 } else {
                     // 返回结果异常，弹出窗口提示用户
-                    alert('高德地图地理编码失败，错误码：' + data.infocode)
+                    alert('高德地图地理编码第' + index + 1 + '个失败，错误码：' + data.infocode)
                     console.log(data)
-                }
-                // 列表显示的活动列表，默认显示音乐类
-                this.showList(this.activeList.slice(0, 6));
-                // 初始化标记点
-                if (index < 6) {
-                    makeMark(data.geocodes[0].location, this.activeList()[index].title());
-                }
+                };
+            }).catch(e => {
+                console.log(e);
+                alert('高德地图地理编码API第' + index + 1 + '个调用失败、请尝试刷新。');
             });
-        }).catch(e => {
-            console.log(e);
-            alert('高德地图地理编码API调用失败');
         });
 
+        Promise.all(arrayOfPr).then(() => {
+            // 列表显示的活动列表，默认显示音乐类
+            this.showList(this.activeList.slice(0, 6));
+            // 初始化标记点
+            this.showList().forEach((data, index) => {
+                makeMark(data.location(), data.title());
+            });
+        })
 
-        // 当前选择显示的活动
+
+        // 初始化当前选择的活动变量
         this.currentActive = ko.observable();
 
         // 选择活动以及显示信息窗
@@ -131,7 +136,9 @@ function initMap() {
         // 检测到设备为大屏幕桌面时
         if (windowWidth >= 640) {
             // 添加工具条以及鹰眼
-            MAP.addControl(new AMap.ToolBar());
+            MAP.addControl(new AMap.ToolBar({
+                position: 'lt'
+            }));
             MAP.addControl(new AMap.OverView({
                 isOpen: true
             }));
@@ -156,13 +163,15 @@ function makeMark(location, title) {
         map: MAP
     });
     markers.push(marker);
-    // console.log(this)
-    if (MAP) {
-        MAP.add(markers);
-        MAP.setFitView();
-    } else if (markers.length == 6) {
-        alert('高德地图加载过慢导致标记点异常，请刷新页面。')
-    }
+    // 判断是否创建完成标记点数组
+    if (markers.length == 6) {
+        if (MAP) {
+            MAP.add(markers);
+            MAP.setFitView();
+        } else {
+            alert('高德地图加载过慢导致标记点异常，请刷新页面。')
+        };
+    }; 
 }
 
 // 更新标记点
