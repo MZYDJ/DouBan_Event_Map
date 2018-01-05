@@ -12,26 +12,32 @@
     <!-- <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script> -->
     <link rel="stylesheet" href="css/style.css">
     <style type="text/css">
-            .info-title {
-                color: white;
-                font-size: 14px;
-                background-color:blue;
-                line-height: 26px;
-                padding: 0px 0 0 6px;
-                font-weight: lighter;
-                letter-spacing: 1px
-            }
-            .info-content {
-                font: 12px Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial;
-                padding: 4px;
-                color: #666666;
-                line-height: 23px;
-            }
-            .info-content img {
-                float: left;
-                margin: 3px;
-            }
-        </style>
+    	#info {
+    		position: relative;
+    	}
+        .info-title {
+            color: white;
+            font-size: 14px;
+            background-color:blue;
+            line-height: 26px;
+            padding: 0px 0 0 6px;
+            font-weight: lighter;
+            letter-spacing: 1px
+        }
+        .info-content {
+            font: 12px Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial;
+            padding: 4px;
+            color: #666666;
+            line-height: 23px;
+            height: 164px;
+            overflow:auto;
+        }
+        .info-img {
+            float: left;
+            margin: 3px;
+            width: 40%;
+        }
+    </style>
 </head>
 <body>
 	<div id='container'>

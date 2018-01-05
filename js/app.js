@@ -132,7 +132,7 @@ function initMap() {
     MAP.plugin(["AMap.ToolBar", 'AMap.Scale', 'AMap.OverView', 'AMap.AdvancedInfoWindow'], function() {
         // 初始化信息窗
         infoWindow = new AMap.AdvancedInfoWindow({
-            content: "<div id='info' data-bind='with: currentActive()'><div class='info-title' data-bind='text: title'></div><div class='info-content' data-bind='html: '></div><img data-bind='attr: {src: image}'><br/><a target='_blank' data-bind='attr: {href: adapt_url}'>查看详情</a></div>",
+            content: "<div id='info' data-bind='with: currentActive()'><div class='info-title' data-bind='text: title'></div><img class='info-img' data-bind='attr: {src: image}'><div class='info-content'><b>组织者：</b><span data-bind='text: ownerName'></span><br><b>详情：</b><span data-bind='html: content'></span></div><a target='_blank' data-bind='attr: {href: adapt_url}'><b>查看详情</b></a></div>",
             offset: new AMap.Pixel(0, -30)
         });
         MAP.addControl(new AMap.Scale());
