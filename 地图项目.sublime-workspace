@@ -1,0 +1,908 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"dat",
+				"data-bind"
+			],
+			[
+				"ma",
+				"markers"
+			],
+			[
+				"MARKER",
+				"marker"
+			],
+			[
+				"BA",
+				"break"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"mar",
+				"marker"
+			],
+			[
+				"map",
+				"MAP"
+			],
+			[
+				"mak",
+				"marker"
+			],
+			[
+				"mark",
+				"maker"
+			],
+			[
+				"F",
+				"forEach"
+			],
+			[
+				"t",
+				"title"
+			],
+			[
+				"l",
+				"length"
+			],
+			[
+				"obser",
+				"observableArray"
+			],
+			[
+				"catli",
+				"catlist"
+			],
+			[
+				"cati",
+				"catImgList"
+			],
+			[
+				"res",
+				"resolve"
+			],
+			[
+				"prom",
+				"Promise"
+			],
+			[
+				"r",
+				"results"
+			],
+			[
+				"cr",
+				"createElement"
+			],
+			[
+				"get",
+				"getJSON"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"pr",
+				"Promise"
+			],
+			[
+				"add",
+				"addressBook"
+			],
+			[
+				"address",
+				"AddressBook"
+			],
+			[
+				"G",
+				"GRID_HEIGHT"
+			],
+			[
+				"gri",
+				"gridw"
+			],
+			[
+				"eme",
+				"Enemy"
+			],
+			[
+				"col",
+				"col-md-6"
+			],
+			[
+				"aw",
+				"awesomeMessage"
+			],
+			[
+				"fl",
+				"flex"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "css/style.css",
+			"settings":
+			{
+				"buffer_size": 1183,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 2520,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 644,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app.js",
+			"settings":
+			{
+				"buffer_size": 7524,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/E/视频/ud989-cat-clicker-ko-starter/index.html",
+			"settings":
+			{
+				"buffer_size": 1042,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/视频/ud989-cat-clicker-ko-starter/js/app.js",
+			"settings":
+			{
+				"buffer_size": 1908,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "ga",
+		"selected_items":
+		[
+			[
+				"ga",
+				"Git: Add All"
+			],
+			[
+				"gc",
+				"Git: Commit"
+			],
+			[
+				"gp",
+				"Git: Push"
+			],
+			[
+				"g p",
+				"Git: Push Tags"
+			],
+			[
+				"for",
+				"Format: Javascript"
+			],
+			[
+				"gs",
+				"Git: Status"
+			],
+			[
+				"js",
+				"Format: Javascript"
+			],
+			[
+				"pci",
+				"Package Control: Install Package"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"g lo",
+				"Git: Log All"
+			],
+			[
+				"g stat",
+				"Git: Status"
+			],
+			[
+				"g re",
+				"Git: Reset (hard) HEAD"
+			],
+			[
+				"git show",
+				"Git: Show Tags"
+			],
+			[
+				"ga i",
+				"Git: Add..."
+			],
+			[
+				"ag",
+				"Set Syntax: Go"
+			],
+			[
+				"git add",
+				"Git: Add All"
+			],
+			[
+				"git checkout ",
+				"Git: Checkout Current File"
+			],
+			[
+				"git c out",
+				"Git: Checkout Current File"
+			],
+			[
+				"git a",
+				"Git: Add All"
+			],
+			[
+				"git:diff",
+				"Git: Diff All Files"
+			],
+			[
+				"git:status",
+				"Git: Status"
+			],
+			[
+				"git:stat",
+				"Git: Status"
+			],
+			[
+				"git:sta",
+				"Git: Status"
+			],
+			[
+				"git:c",
+				"Git: Commit"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control:in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/601/OneDrive/前端/项目/地图项目"
+	],
+	"file_history":
+	[
+		"/C/Users/601/OneDrive/前端/项目/地图项目/LICENSE",
+		"/C/Users/601/OneDrive/前端/项目/地图项目/.git/COMMIT_EDITMSG",
+		"/C/Users/601/AppData/Roaming/Lantern/logs/lantern.log",
+		"/C/Users/601/OneDrive/前端/项目/地图项目/css/index.css",
+		"/C/Users/601/OneDrive/前端/web练习/exoplanet-explorer/app/scripts/app.js",
+		"/E/视频/ud989-cat-clicker-ko-starter/js/app.js",
+		"/C/Users/601/OneDrive/前端/web练习/exoplanet-explorer/app/data/earth-like-results.json",
+		"/C/Users/601/OneDrive/前端/web练习/exoplanet-explorer/app/index.html",
+		"/C/Users/601/Desktop/下载.html",
+		"/E/视频/ud989-cat-clicker-ko-starter/index.html",
+		"/C/Users/601/OneDrive/前端/项目/地图项目/DouBanAPI/29085679",
+		"/C/Users/601/OneDrive/前端/项目/地图项目/DouBanAPI/29354659",
+		"/C/Users/601/OneDrive/前端/项目/地图项目/css/style.css",
+		"/C/Users/601/OneDrive/前端/项目/地图项目/README.md",
+		"/C/Users/601/OneDrive/前端/web练习/exoplanet-explorer/bower_components/mocha/mocha.js",
+		"/C/Users/601/OneDrive/前端/项目/mockup-portfolio/index.html",
+		"/C/Users/601/OneDrive/前端/项目/青蛙过河/index.html",
+		"/E/视频/ud989-cat-clicker-ko-starter/.git/COMMIT_EDITMSG",
+		"/E/视频/ud989-todo-app/index.html",
+		"/E/视频/ud989-todo-app/js/views/todo-view.js",
+		"/E/视频/ud864/05_Interpreting Geocoding Responses.html",
+		"/E/视频/ud989-todo-app/js/models/todo.js",
+		"/E/视频/ud864/Project_Code_1_TheJavaScriptAPIOverview.html",
+		"/E/视频/ud864/07_Markers_Infowindows Quiz.html",
+		"/E/视频/ud864/04_Hello_Map_Quiz.html",
+		"/E/视频/Cat Clicker/js/app.js",
+		"/E/视频/Cat Clicker/cat.html",
+		"/E/视频/ud989-school-attendance/js/app.js",
+		"/E/视频/portal_example.html",
+		"/E/视频/frontend-nanodegree-resume/js/resumeBuilder.js",
+		"/E/视频/frontend-nanodegree-resume/js/helper.js",
+		"/E/视频/frontend-nanodegree-resume/index.html",
+		"/E/视频/ud989-school-attendance/index.html",
+		"/C/Users/601/OneDrive/前端/web练习/exoplanet-explorer/node_modules/bluebird/js/browser/bluebird.js",
+		"/E/视频/frontend-nanodegree-resume/README.md",
+		"/E/视频/ud989-retain/js/retain.js",
+		"/E/视频/ud989-retain/index.html",
+		"/E/视频/Cat Clicker/css/style.css",
+		"/C/Users/601/Desktop/data.js",
+		"/E/视频/ud989-retain/css/retain.css",
+		"/E/视频/Cat Clicker/.git/COMMIT_EDITMSG",
+		"/E/视频/course-ajax/API",
+		"/C/Users/601/OneDrive/前端/项目/Feed Reader Testing_zh/jasmine/lib/jasmine-2.1.2/jasmine.css",
+		"/C/Users/601/OneDrive/前端/ud549/spec/AddressBookSpec.js",
+		"/C/Users/601/OneDrive/前端/ud549/src/AddressBook.js",
+		"/C/Users/601/OneDrive/前端/项目/Feed Reader Testing_zh/jasmine/spec/feedreader.js",
+		"/C/Users/601/Downloads/EEFIH2APAZMOT4W4.ics",
+		"/C/Users/601/OneDrive/前端/web练习/exoplanet-explorer/.git/COMMIT_EDITMSG",
+		"/C/Users/601/OneDrive/前端/web练习/exoplanet-explorer/app/scripts/polymer-starter-kit-misc.js",
+		"/E/视频/readyState-start/index.html",
+		"/E/视频/setTimeout-start/setTimeout-start.html",
+		"/C/Users/601/Desktop/$ npm install -g gulp bower && npm install && bowe日志.log",
+		"/C/Users/601/OneDrive/前端/项目/Feed Reader Testing_zh/index.html",
+		"/C/Users/601/OneDrive/前端/项目/Feed Reader Testing_zh/.git/COMMIT_EDITMSG",
+		"/C/Users/601/AppData/Roaming/Sublime Text 3/Packages/User/Localization.sublime-settings",
+		"/C/Users/601/OneDrive/前端/ud549/src/Contact.js",
+		"/C/Users/601/OneDrive/前端/ud549/SpecRunner.html",
+		"/C/Users/601/OneDrive/前端/项目/青蛙过河/js/app.js",
+		"/C/Users/601/OneDrive/前端/ud549/README.md",
+		"/C/Users/601/OneDrive/前端/项目/青蛙过河/README.md",
+		"/C/Users/601/OneDrive/前端/项目/青蛙过河/js/engine.js",
+		"/C/Users/601/OneDrive/前端/项目/project-pixel-art-maker-starter/index.html",
+		"/C/Users/601/OneDrive/前端/项目/青蛙过河/.git/COMMIT_EDITMSG",
+		"/C/Users/601/OneDrive/前端/项目/fend-project-memory-game/js/app.js",
+		"/C/Users/601/OneDrive/前端/项目/青蛙过河/js/resources.js",
+		"/C/Users/601/OneDrive/前端/项目/fend-project-memory-game/index.html",
+		"/C/Users/601/OneDrive/前端/项目/fend-project-memory-game/css/app.css",
+		"/E/视频/canvas.html",
+		"/C/Users/601/OneDrive/前端/项目/青蛙过河/css/style.css",
+		"/C/Users/601/OneDrive/前端/项目/表情包生成器/index.html",
+		"/C/Users/601/OneDrive/前端/项目/表情包生成器/.git/COMMIT_EDITMSG",
+		"/C/Users/601/OneDrive/前端/项目/表情包生成器/新建文本文档.txt",
+		"/C/Users/601/OneDrive/前端/项目/-/.git/COMMIT_EDITMSG",
+		"/C/Users/601/OneDrive/前端/项目/Arcade Game Clone_zh/.git/COMMIT_EDITMSG",
+		"/E/视频/course-es6/lesson-4/look-at-a-polyfill/code.js",
+		"/C/Users/601/Desktop/app.312d2.js",
+		"/C/Users/601/Desktop/前端开发（进阶） - Udacity_files/app.312d2.js.下载",
+		"/C/Users/601/Desktop/前端开发（进阶） - Udacity_files/manifest.c031c.js.下载",
+		"/C/Users/601/Desktop/前端开发（进阶） - Udacity_files/nr-spa-1016.min.js.下载",
+		"/C/Users/601/Desktop/前端开发（进阶） - Udacity_files/ureact-code-editor.2cb89.js.下载",
+		"/C/Users/601/Desktop/前端开发（进阶） - Udacity_files/vendor.da274.js.下载",
+		"/C/Users/601/Desktop/前端开发（进阶） - Udacity_files/gtm.js.下载",
+		"/C/Users/601/Desktop/前端开发（进阶） - Udacity_files/8.b8f61.js.下载",
+		"/C/Users/601/Desktop/Animate.css.html",
+		"/C/Users/601/OneDrive/前端/项目/project-pixel-art-maker-starter/designs.js",
+		"/C/Users/601/OneDrive/前端/项目/project-pixel-art-maker-starter/README.md",
+		"/C/Users/601/OneDrive/前端/项目/project-pixel-art-maker-starter/.git/COMMIT_EDITMSG",
+		"/C/Users/601/OneDrive/前端/项目/fend-project-memory-game/README.md",
+		"/C/Users/601/OneDrive/前端/项目/fend-project-memory-game/.git/COMMIT_EDITMSG",
+		"/C/Users/601/OneDrive/前端/项目/fend-project-memory-game/.gitignore",
+		"/C/Users/601/OneDrive/前端/项目/fend-project-memory-game/LICENSE.txt",
+		"/C/Users/601/OneDrive/前端/项目/fend-project-memory-game/CONTRIBUTING.md",
+		"/C/Users/601/Desktop/inject.js",
+		"/E/yourGirlFriend/README.md",
+		"/D/SecureCRTSecureFX_HH_x64_7.0.0.326/Data/Settings/Config/KnownHosts/192.168.3.1[192.168.3.1]22.pub",
+		"/C/Users/601/OneDrive/前端/web练习/jQuery Sample Site/index.html",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/my-travel-plans/index.html",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/my-travel-plans/README.me",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/my-travel-plans/app.css",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/lighthouse/CONTRIBUTING.md",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/course-git-blog-project/.git/COMMIT_EDITMSG",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/new-git-project/css/app.css",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/new-git-project/index.html",
+		"/C/Users/601/.ssh/id_rsa",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/my-travel-plans/.git/COMMIT_EDITMSG",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/new-git-project/.git/COMMIT_EDITMSG",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/new-git-project/.git/MERGE_MSG",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/new-git-project/.git/TAG_EDITMSG",
+		"/C/Users/601/AppData/Roaming/Sublime Text 3/Packages/User/Git.sublime-settings",
+		"/C/Users/601/.bash_history",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/new-git-project/new fille: index.html/index.html",
+		"/C/Users/601/OneDrive/前端/udacity-git-course/course-git-blog-project/index.html",
+		"/C/Users/601/OneDrive/前端/web练习/jQuery Sample Site/app.js",
+		"/C/Users/601/.bash_profile",
+		"/C/Users/601/.udacity-terminal-config/git-completion.bash",
+		"/C/Users/601/.udacity-terminal-config/git-prompt.sh",
+		"/C/Users/601/OneDrive/前端/udacity-terminal-config/bash_profile",
+		"/C/Users/601/OneDrive/前端/udacity-terminal-config/git-prompt.sh",
+		"/C/Users/601/.git-prompt.sh",
+		"/C/Users/601/OneDrive/前端/项目/mockup-portfolio/css/main.css",
+		"/C/Users/601/OneDrive/前端/web练习/bootstrap-prestructure/bootstrap-prestructure.htm",
+		"/C/Users/601/OneDrive/前端/项目/mockup-portfolio/css/bootstrap.css",
+		"/C/Users/601/OneDrive/前端/项目/mockup-portfolio/test.html",
+		"/C/Users/601/OneDrive/前端/bootstrap-4.0.0-beta.2/index.html",
+		"/C/Users/601/OneDrive/前端/项目/mockup-portfolio/js/bootstrap.min.js",
+		"/C/Users/601/OneDrive/前端/项目/mockup-portfolio/js/bootstrap.js",
+		"/C/Users/601/OneDrive/前端/项目/mockup-portfolio/css/bootstrap.min.css",
+		"/C/Users/601/OneDrive/前端/web练习/making-peach-ice-cream/making-peach-ice-cream/index.html"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 145.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"= ",
+			"info-content",
+			"infoWindow",
+			"removeMark",
+			"length",
+			"infoWindow",
+			"MAPREADY",
+			"updateInfoWindow",
+			"makeMark",
+			"marker",
+			"info-title",
+			"info",
+			"://",
+			"info",
+			"arrayOfPr",
+			"VIEW",
+			"applyBindings",
+			"currentActive",
+			"infoWindow",
+			"InfoWindow",
+			"infoWindow",
+			"chooseList",
+			"updateInfoWindow",
+			"infoWindow",
+			"InfoWindow",
+			"infoWindow",
+			"InfoWindow",
+			"infoWindow",
+			"Infowindow",
+			"infoWindow",
+			"InfoWindow",
+			"infoWindow",
+			"infowindow",
+			"infoWindow",
+			"InfoWindow",
+			"infowindow",
+			"Infowindow",
+			"infowindow",
+			"InfoWindow",
+			"infowindow",
+			"InfoWindow",
+			"infoWindow",
+			"{\n",
+			"infowindow",
+			"Infowindow",
+			"infowindow",
+			"currentActive",
+			"infowindow",
+			"Infowindow",
+			"infowindow",
+			"Infowindow",
+			"infowindow",
+			"View",
+			"VIEW",
+			"Promise",
+			"makeMark",
+			"\"",
+			"makers",
+			"View",
+			"VIEW",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"Map",
+			"map",
+			"img",
+			"length",
+			"0",
+			"%;",
+			"v",
+			"priority",
+			"toggleCompleted",
+			"$el",
+			"edit",
+			"cat",
+			"Cat",
+			"cat",
+			")\n",
+			"\\",
+			"']\n",
+			"forEach",
+			";",
+			"=",
+			")",
+			"ko.observable(",
+			"studentMissed",
+			"studentName",
+			"days",
+			"checked",
+			"http",
+			"innerText",
+			"Missed",
+			"missed",
+			"model",
+			"Missed",
+			"missed",
+			"Missed",
+			"missed",
+			"$(this).children('td').children('input')",
+			"attendance",
+			"countMissing",
+			"attendance",
+			"newAttendance",
+			"$allCheckboxes",
+			"$allMissed",
+			" $allMissed",
+			"Math",
+			"localStorage"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"octopus.getModel()",
+			"$('tbody input')",
+			"$('tbody .missed-col')",
+			";\\r",
+			"\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								563,
+								571
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 726.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2520,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1883,
+								1883
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 924.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								604,
+								604
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7524,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2709,
+								2717
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1188.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/E/视频/ud989-cat-clicker-ko-starter/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1042,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								663,
+								663
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 198.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/E/视频/ud989-cat-clicker-ko-starter/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1908,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1036,
+								1036
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 51.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 144.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 102.0
+	},
+	"pinned_build_system": "",
+	"project": "地图项目.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 228.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

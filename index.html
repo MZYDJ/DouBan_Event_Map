@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
     <style type="text/css">
     	#info {
+    		background-color: #FFF;
     		position: relative;
     	}
         .info-title {
@@ -41,8 +42,13 @@
 </head>
 <body>
 	<div id='container'>
-		<div id='map'></div>
-		<div id='panel'>
+		<div id='map' data-bind='click: closeList'></div>
+		<a id="menu" class="header__menu" data-bind='click: openList'>
+		  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+		    <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+		  </svg>
+		</a>
+		<div id='panel' data-bind='css: {open: listShow}'>
 		<table class='choole' >
 			<tr>
 				<td class='choole' data-bind='click: chooseList(0)'>音乐</td>
@@ -51,15 +57,14 @@
 			</tr>
 		</table>
 		<ul id='list' data-bind='foreach: showList'>
-			<!-- <div id='choole'></div> -->
 			<li class="poibox" data-bind='css: { selected: alt == $parent.currentActive().alt}, click: $parent.chooseActive'>
 				<div class="poi-imgbox"><img class="poi-img" data-bind='attr: {src: image}'></img></div>
 				<div class="poi-info-left">    
 					<h3 class="poi-title" data-bind='text: title'></h3>
 					<div class="poi-info">
-						<span class="poi-price">
+						<p class="poi-price">
 							<font color="#999999">时间:</font><font color="#f53623" data-bind='text: time_str'></font>
-						</span>
+						</p>
 						<p class="poi-addr" data-bind='text: address'></p>
 					</div>
 				</div>

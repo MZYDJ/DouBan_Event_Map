@@ -95,6 +95,7 @@ class ViewModel {
             this.currentActive(clickedActive);
             updateInfoWindow(this.currentActive().location());
             markers[$.inArray(clickedActive, this.showList())].setAnimation('AMAP_ANIMATION_DROP');
+            this.closeList();
         };
 
         // 改变现实的活动列表以及更改标注点
@@ -122,6 +123,17 @@ class ViewModel {
                 infoWindow.close();
             };
         };
+
+        // 移动视图下打开活动列表
+        this.listShow = ko.observable(false);
+        this.openList = () => {
+            this.listShow(true);
+        };
+
+        // 移动视图下关闭活动列表
+        this.closeList = () => {
+            this.listShow(false);
+        };
         console.log('完成绑定')
     };
 };
@@ -132,11 +144,11 @@ let MAP;
 
 function initMap() {
     console.log('开始初始化地图');
-    initAMapUI();
     MAP = new AMap.Map('map', {
         resizeEnable: true,
         center: [108.946922, 34.261219],
-        zoom: 13
+        zoom: 13,
+        showBuildingBlock: true
     });
 
 
@@ -150,18 +162,18 @@ function initMap() {
         MAP.addControl(new AMap.Scale());
         const windowWidth = $(window).width();
         // 检测到设备为小屏幕手机时
-        if (windowWidth < 640) {
+        if (windowWidth < 720) {
             // 改变缩放级以
             MAP.setZoom(12);
+            initAMapUI();
             AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
                 //添加一个缩放控件
                 MAP.addControl(new BasicControl.Zoom({
-                    position: 'rt'
+                    position: 'lt'
                 }));
             });
-        };
-        // 检测到设备为大屏幕桌面时
-        if (windowWidth >= 640) {
+        } else {
+            // 检测到设备为大屏幕桌面时
             // 添加工具条以及鹰眼
             MAP.addControl(new AMap.ToolBar({
                 position: 'lt'
