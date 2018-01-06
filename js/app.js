@@ -3,23 +3,35 @@ const model = {
     music: [29086248, 29864218, 29765880, 29999612, 29354659, 29122980],
     drama: [29129154, 29730478, 29163465, 29085679, 29979631, 29226275],
     party: [30007955, 29894782, 29943640, 29971061, 30009328, 29985248]
-}
+};
 
 // 活动类
 class Activity {
     constructor(data) {
         // console.log(data)
-        this.image = ko.observable(data.image);
-        this.adapt_url = ko.observable(data.adapt_url);
-        this.ownerName = ko.observable(data.owner.name);
-        this.alt = ko.observable(data.alt);
-        this.title = ko.observable(data.title);
-        this.content = ko.observable(data.content);
-        this.time_str = ko.observable(data.time_str);
-        this.address = ko.observable(data.address);
-        this.location = ko.observable(data.location);
-    }
-}
+        if (data) {
+            this.image = ko.observable(data.image);
+            this.adapt_url = ko.observable(data.adapt_url);
+            this.ownerName = ko.observable(data.owner.name);
+            this.alt = ko.observable(data.alt);
+            this.title = ko.observable(data.title);
+            this.content = ko.observable(data.content);
+            this.time_str = ko.observable(data.time_str);
+            this.address = ko.observable(data.address);
+            this.location = ko.observable(data.location);
+        } else {
+            this.image = ko.observable();
+            this.adapt_url = ko.observable();
+            this.ownerName = ko.observable();
+            this.alt = ko.observable();
+            this.title = ko.observable();
+            this.content = ko.observable();
+            this.time_str = ko.observable();
+            this.address = ko.observable();
+            this.location = ko.observable();
+        };
+    };
+};
 
 class ViewModel {
     constructor() {
@@ -72,11 +84,11 @@ class ViewModel {
             this.showList().forEach((data, index) => {
                 makeMark(data.location(), data.title(), index);
             });
-        })
+        });
 
 
         // 初始化当前选择的活动变量
-        this.currentActive = ko.observable();
+        this.currentActive = ko.observable(new Activity());
 
         // 选择活动以及显示信息窗
         this.chooseActive = clickedActive => {
@@ -111,15 +123,15 @@ class ViewModel {
             };
         };
         console.log('完成绑定')
-    }
-}
+    };
+};
 
 
 // 地图初始化
 let MAP;
 
 function initMap() {
-    console.log('开始初始化地图')
+    console.log('开始初始化地图');
     initAMapUI();
     MAP = new AMap.Map('map', {
         resizeEnable: true,
@@ -160,7 +172,7 @@ function initMap() {
         };
 
     });
-}
+};
 
 
 // 存储标记点的数组
@@ -189,20 +201,20 @@ function makeMark(location, title, index) {
             alert('高德地图加载过慢导致标记点异常，请刷新页面。')
         };
     };
-}
+};
 
 // 删除多余标记点
 function removeMark(index) {
     MAP.remove(markers.slice(index));
     markers.length = index;
-}
+};
 
 // 更新标记点
 function updateMark(location, title, index) {
     markers[index].setPosition(location.split(','));
     markers[index].setTitle(title);
     MAP.setFitView();
-}
+};
 
 // 初始化信息窗
 let infoWindow,
@@ -213,7 +225,7 @@ function updateInfoWindow(location) {
     if (!INFOBOIND) {
         ko.applyBindings(VIEW, document.getElementById('info'));
         INFOBOIND = true;
-    }
+    };
 };
 
 let VIEW;

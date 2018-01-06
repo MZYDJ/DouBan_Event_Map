@@ -52,7 +52,7 @@
 		</table>
 		<ul id='list' data-bind='foreach: showList'>
 			<!-- <div id='choole'></div> -->
-			<li class="poibox" data-bind='click: $parent.chooseActive'>
+			<li class="poibox" data-bind='css: { selected: alt == $parent.currentActive().alt}, click: $parent.chooseActive'>
 				<div class="poi-imgbox"><img class="poi-img" data-bind='attr: {src: image}'></img></div>
 				<div class="poi-info-left">    
 					<h3 class="poi-title" data-bind='text: title'></h3>
