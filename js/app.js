@@ -42,12 +42,8 @@ class ViewModel {
         // 创建初始Promise数组，完成豆瓣API请求
         for (let sort in model) {
             model[sort].forEach(id => {
-                // 由于豆瓣API的Apikey暂不对个人开放申请
-                // 公共API直接进行查询牵扯到跨域问题
-                // 暂时使用下载到本地的数据模拟，豆瓣同城api为：
-                // GET https://api.douban.com/v2/event/:id
-                // 如果有后端程序可以由后端完成api请求
-                arrayOfPr.push(fetch('DouBanAPI/' + id).then(data => data.json()));
+                // 豆瓣同城api：GET https://api.douban.com/v2/event/:id
+                arrayOfPr.push($.ajax('https://api.douban.com/v2/event/' + id, {dataType: 'jsonp'}));
             });
         };
 
