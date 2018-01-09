@@ -43,7 +43,14 @@ class ViewModel {
         for (let sort in model) {
             model[sort].forEach(id => {
                 // 豆瓣同城api：GET https://api.douban.com/v2/event/:id
-                arrayOfPr.push($.ajax('https://api.douban.com/v2/event/' + id, {dataType: 'jsonp'}));
+                arrayOfPr.push($.ajax('https://api.douban.com/v2/event/' + id, {dataType: 'jsonp'}).catch(e => {
+                    // 由于豆瓣API个人开发者无法申请到认证，所以经连接数受限制，API失败时使用本
+                    // 缓存文件代替，此功能需要本地为通过搭建HTTP服务访问，如果直接打开因为同源
+                    // 策略会出错
+                    console.log('由于豆瓣API不稳定，' + sort + '分类的'+ id +'活动接口获取失败，使用本地缓存文件代替');
+                    console.log(e);
+                    return fetch('DouBanAPI/' + id).then(data => data.json());
+                }));
             });
         };
 
